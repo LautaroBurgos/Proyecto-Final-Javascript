@@ -87,11 +87,10 @@ function crearProductoEnCarrito(producto,carrito){
                 document.getElementById(producto.nombre).remove();
                 actualizarBotonCompra(producto,carrito);
                 actualizarSubtotal(carrito);
-                Swal.fire(
-                    'Eliminado!',
-                    'El producto ha sido eliminado.',
-                    'success'
-                )
+                Swal.fire({  title:'Eliminado!',
+                    text:'El producto ha sido eliminado.',
+                    confirmButtonColor: '#2f2c48'
+                })
             }
         })
     }

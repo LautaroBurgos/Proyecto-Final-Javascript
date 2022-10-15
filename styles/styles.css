@@ -232,7 +232,7 @@ li:hover{
     margin-bottom: 40px;
     width: 100%;
     display:grid;
-    grid-template-columns: repeat(2,auto);
+    grid-template-columns: repeat(1,auto);
     grid-auto-rows: minmax(100px, auto);
     grid-gap: 50px;
     justify-content: center;
@@ -391,6 +391,7 @@ li:hover{
     }
     #select-orden{
         margin: 15px 15px 15px 0px;
+        text-align: left;
     }
     #footer{
         flex-direction: row;

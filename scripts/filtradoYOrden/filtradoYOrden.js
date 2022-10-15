@@ -7,7 +7,6 @@ let arrayJuegos=arrayJuegosInicial;
     el "arrayJuegos".
 */
 function eliminarDivsJuegos(){
-    let galeria=document.querySelector("#galeria");
     for(let juegoBuscado of arrayJuegos){
         let divBuscado=document.getElementById(juegoBuscado.id);
         divBuscado.remove();
@@ -23,7 +22,9 @@ function agregarEventoGenero(carrito){
         let form= new FormData(formulario);
         e.preventDefault();
         let generoSeleccionado=(form.get("genero"));
-        filtrarPorGenero(generoSeleccionado,carrito);
+        let galeria=document.querySelector("#galeria");
+        galeria.style.opacity="0";
+        setTimeout(filtrarPorGenero,800,generoSeleccionado,carrito);
     }
 }
 /*
@@ -42,10 +43,14 @@ function filtrarPorGenero(genero,carrito){
 function agregarEventoReestablecer(carrito){
     let botonReset=document.getElementById("reestablecer");
     botonReset.onclick=()=>{
-        eliminarDivsJuegos();
-        arrayJuegos=arrayJuegosInicial;
-        crearDivsJuegos(arrayJuegosInicial,carrito);
-        actualizarTodosLosBotones(arrayJuegosInicial,carrito);
+        let galeria=document.querySelector("#galeria");
+        galeria.style.opacity="0";
+        setTimeout(function(){
+            eliminarDivsJuegos();
+            arrayJuegos=arrayJuegosInicial;
+            crearDivsJuegos(arrayJuegosInicial,carrito);
+            actualizarTodosLosBotones(arrayJuegosInicial,carrito);
+        },700);
     }
 }
 /*
@@ -65,7 +70,10 @@ function agregarEventoOrdenar(carrito){
     let botonOrdenar=document.getElementById("ordenar");
     botonOrdenar.onclick=(e)=>{
         e.preventDefault();
+        let galeria=document.querySelector("#galeria");
+        galeria.style.opacity="0";
         let orden=document.getElementById("select-orden").value;
+       setTimeout(function(){
         switch(orden){
             case "Menor a mayor precio":
                 ordenarMenorAMayor(carrito);
@@ -77,6 +85,7 @@ function agregarEventoOrdenar(carrito){
                 ordenarAlfabeticamente(carrito);
                 break;
         }
+       },800);
     }
 }
 /*

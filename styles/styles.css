@@ -320,6 +320,16 @@ li:hover{
     margin: 0;
     color: grey;
 }
+@media(min-width:600px){
+    #galeria{
+        grid-template-columns: repeat(2,auto);
+    }
+}
+@media(min-width:800px){
+    #galeria{
+        grid-template-columns: repeat(3,auto);
+    }
+}
 @media(min-width:950px){
     main{
         flex-direction: row;

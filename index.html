@@ -16,8 +16,8 @@
         <nav id="nav-bar">
             <img id="nav-bar__logo" src="styles/img/logo.png">
             <ul id="nav-bar__menu">
-                <li class="nav-bar__menu__elemento">LOGIN</li>
-                <li class="nav-bar__menu__elemento">QUIENES SOMOS</li>
+                <li class="nav-bar__menu__elemento"><a class="nav-link" href="">LOGIN</a></li>
+                <li class="nav-bar__menu__elemento"><a class="nav-link" href="#nosotros">QUIENES SOMOS</a></li>
                 <li ><img id="logo__carrito" src="styles/img/carrito.png" alt=""></li>
             </ul>
         </nav>
@@ -38,14 +38,21 @@
             </div>
         </div>
         <div id="div-formulario">
-            <h4 id="form-titulo">BUSCAR POR CATEGORIA</h4>
             <form id="formulario" action="">
+                <label id="ordenar-titulo" for="orden">ORDENAR PRODUCTOS</label>
+                <select id="select-orden">
+                    <option name="orden" value="Alfabéticamente">Alfabeticamente</option>
+                    <option name="orden" value="Menor a mayor precio">Precio : Menor a mayor</option>
+                    <option name="orden" value="Mayor a menor precio">Precio : Mayor a menor</option>
+                </select>
+                <button id="ordenar">ORDENAR</button>
+                <h4 id="form-titulo">BUSCAR POR CATEGORIA</h4>
                 <label class="genero"><input type="radio" value="Accion" name="genero" id="genero__accion">Accion</label>
                 <label class="genero"><input type="radio" value="Aventura" name="genero" id="genero__aventura">Aventura</label>
                 <label class="genero"><input type="radio" value="Carreras" name="genero" id="genero__carreras">Carreras</label>
                 <label class="genero"><input type="radio" value="Terror" name="genero" id="genero__terror">Terror</label>
                 <label class="genero"><input type="radio" value="Pelea" name="genero" id="genero__pelea">Pelea</label>
-                <input id="filtrar" type="submit" value="FILTRAR">
+                <button id="filtrar">FILTRAR</button>
             </form>
             <button id="reestablecer">REESTABLECER</button>
         </div>
@@ -80,7 +87,6 @@
     <script src="scripts/funcionesGaleriaJuegos/funcionesGaleria.js" type="module"></script>
     <script src="scripts/filtradoYOrden/filtradoYOrden.js" type="module"></script>
     <script src="scripts/main/main.js" type="module"></script>
-    <script src="scripts/funcionesLibreria/funcionesLibreria.js" type="module"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>

@@ -7,7 +7,19 @@ let carritoEnLS=localStorage.getItem('Carrito');
 if(carritoEnLS){
     carrito=JSON.parse(carritoEnLS);
 }
+function agregarReproduccionAutomaticaVideo(){
+    let body=document.getElementById("body");
+    let video=document.getElementById("video");
+    video.play();
+    body.onscroll=()=>{
+        if(window.scrollY<150){
+            video.play();
+        }
+    }
+}
 
+
+agregarReproduccionAutomaticaVideo();
 setearEstadoCarrito();
 crearDivsJuegos(arrayJuegos,carrito);
 agregarEventoGenero(carrito);

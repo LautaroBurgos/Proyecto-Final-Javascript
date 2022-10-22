@@ -84,10 +84,10 @@ function agregarBotonesComprar(arrayJuegos,carrito){
                 crearProductoEnCarrito(juegoSeleccionado,carrito);
                 actualizarBotonCompra(juegoSeleccionado,carrito);
                 actualizarSubtotal(carrito);
-                mostrarToast("El producto ha sido agregado al carrito");
+                mostrarToast("El producto ha sido agregado al carrito",true);
             }
             else{
-               mostrarToast("El producto ya se encontraba agregado al carrito");
+               mostrarToast("El producto ya se encontraba agregado al carrito",false);
             }
         }
         document.getElementById((juego.id)).append(boton);
@@ -96,10 +96,14 @@ function agregarBotonesComprar(arrayJuegos,carrito){
 /*
     Crea y muestra un toast con el texto pasado por parametro.
 */
-function mostrarToast(texto){
+function mostrarToast(texto,agregoJuego){
+    let color = agregoJuego ? "linear-gradient(to right, #00b09b, #96c93d)":"linear-gradient(to right, rgb(169, 10, 10), red)";
     Toastify({
         text: texto,
         duration: 1500,
+        style: {
+             background: color,
+          }
         }).showToast();
 }
 export {crearDivsJuegos};

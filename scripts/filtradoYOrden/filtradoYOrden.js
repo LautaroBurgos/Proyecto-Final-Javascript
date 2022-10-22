@@ -22,9 +22,11 @@ function agregarEventoGenero(carrito){
         let form= new FormData(formulario);
         e.preventDefault();
         let generoSeleccionado=(form.get("genero"));
-        let galeria=document.querySelector("#galeria");
-        galeria.style.opacity="0";
-        setTimeout(filtrarPorGenero,800,generoSeleccionado,carrito);
+        if(generoSeleccionado!=null){
+            let galeria=document.querySelector("#galeria");
+            galeria.style.opacity="0";
+            setTimeout(filtrarPorGenero,800,generoSeleccionado,carrito);
+        }
     }
 }
 /*

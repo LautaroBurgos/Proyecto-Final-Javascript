@@ -16,11 +16,12 @@
     <header>
         <nav id="nav-bar">
             <img id="nav-bar__logo" src="styles/img/logo.png">
-            <ul id="nav-bar__menu">
-                <li class="nav-bar__menu__elemento"><a class="nav-link" href="">LOGIN</a></li>
-                <li class="nav-bar__menu__elemento"><a class="nav-link" href="#nosotros">QUIENES SOMOS</a></li>
-                <li ><img id="logo__carrito" src="styles/img/carrito.png" alt=""></li>
-            </ul>
+            <div id="nav-bar__menu">
+                <div id="li__carrito">
+                    <p id="subtotal__carrito">$0ARS</p>
+                    <img id="logo__carrito" src="styles/img/carrito.png" alt="">
+                </div>
+            </div>
         </nav>
     </header>
     <div id="banner">
@@ -36,6 +37,10 @@
             </div>
             <div id="div__subtotal">
                 <p><strong>SUBTOTAL: </strong></p><p id="subtotal">$0ARS</p>
+            </div>
+            <div id="div__botones__carrito">
+                <button id="finalizar__compra">FINALIZAR COMPRA</button>
+                <button id="vaciar__carrito">VACIAR CARRITO</button>
             </div>
         </div>
         <div id="div-formulario">

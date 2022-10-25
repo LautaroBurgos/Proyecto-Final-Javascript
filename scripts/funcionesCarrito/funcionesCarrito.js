@@ -1,11 +1,91 @@
+import { mostrarToast } from "../funcionesGaleriaJuegos/funcionesGaleria.js";
+
 /*
     Setea los eventos para cerrar y abrir la pantalla donde se va a mostrar el carrito
 */
-function setearEstadoCarrito(){
+function setearEstadoCarrito(carrito,arrayJuegos){
     let elemento=document.getElementById("logo__carrito");
     elemento.addEventListener("click",desplegarCarrito);
     elemento=document.getElementById("lista-carrito__cerrar");
     elemento.addEventListener("click",cerrarCarrito);
+
+    let botonVaciarCarrito=document.getElementById("vaciar__carrito");
+    agregarEventoVaciarCarrito(botonVaciarCarrito,carrito,arrayJuegos);
+    let botonFinalizarCompra=document.getElementById("finalizar__compra");
+    agregarEventoFinalizarCompra(botonFinalizarCompra,carrito,arrayJuegos);
+}
+/*
+    Agrega al boton que vacia el carrito, su respectivo evento para cumplir con esta funcionalidad.
+ */
+function agregarEventoVaciarCarrito(botonVaciarCarrito,carrito,arrayJuegos){
+    botonVaciarCarrito.onclick=()=>{
+        if(carrito.length>0){
+            Swal.fire({
+                title: 'Esta seguro?',
+                text: 'Va a eliminar todos los productos de su carrito!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2f2c48',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'ELIMINAR',
+                cancelButtonText: 'CANCELAR'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    for(let producto of carrito){
+                        document.getElementById(producto.nombre).remove();
+                    }
+                    resetearBotonesCompra(arrayJuegos);
+                    carrito.length=0;
+                    actualizarSubtotal(carrito);
+                    Swal.fire({  title:'Eliminados!',
+                        icon: 'success',
+                        text:'Los productos se han eliminado correctamente de su carrito.',
+                        confirmButtonColor: '#2f2c48'
+                    })
+                }
+            })
+        }
+        else{
+            mostrarToast("Su carrito se encuentra vacio.",false);
+        }
+    }
+}
+/*
+    Agrega el evento al boton de finalizar compra, para que realice la accion correspondiente,
+    mostrar un mensaje al usuario, borrar todos los elementos del carrito, y agregar validaciones.
+*/
+function agregarEventoFinalizarCompra(botonFinalizarCompra,carrito,arrayJuegos){
+    botonFinalizarCompra.onclick=()=>{
+        if(carrito.length>0){
+            let total=String(actualizarSubtotal(carrito));
+            Swal.fire({
+                title: 'Va a finalizar su compra',
+                text: "Su compra suma un total de $"+total+"ARS , desea continuar?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#2f2c48',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'FINALIZAR',
+                cancelButtonText: 'CANCELAR'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    for(let producto of carrito){
+                        document.getElementById(producto.nombre).remove();
+                    }
+                    resetearBotonesCompra(arrayJuegos);
+                    carrito.length=0;
+                    actualizarSubtotal(carrito);
+                    Swal.fire({  title:'Gracias por su compra!',
+                    icon: 'success',
+                        confirmButtonColor: '#2f2c48'
+                    })
+                }
+            })
+        }
+        else{
+            mostrarToast("Su carrito se encuentra vacio.",false);
+        }
+    }
 }
 /*
     Establece el atributo de estilo display en block para que el carrito sea visible
@@ -95,6 +175,13 @@ function crearProductoEnCarrito(producto,carrito){
         })
     }
 }
+function resetearBotonesCompra(arrayJuegos){
+    for (let juego of arrayJuegos){
+        let boton=document.getElementById(`${juego.id}_boton`);
+        boton.innerText="AGREGAR AL CARRITO";
+        document.getElementById((juego.id)).append(boton);
+    }
+}
 /*
     Actualiza el boton de un juego, de "AGREGAR AL CARRITO" a "EN EL CARRITO".
 */
@@ -103,7 +190,8 @@ function actualizarBotonCompra(juegoSeleccionado,carrito){
     let botonBuscado=document.getElementById(idBuscado);
     if(carrito.some(juego=>juegoSeleccionado.nombre==juego.nombre)){
         botonBuscado.innerText="EN EL CARRITO";
-    }else{
+    }
+    else{
         botonBuscado.innerText="AGREGAR AL CARRITO";
     }
 }
@@ -111,14 +199,17 @@ function actualizarBotonCompra(juegoSeleccionado,carrito){
     Actualiza el subtotal de la compra segund corresponda.
 */
 function actualizarSubtotal(carrito){
+    let subtotal= document.getElementById("subtotal");
+    let subtotalPintado=document.getElementById("subtotal__carrito");
     let monto=0;
     if(carrito.length>0){
         for(let valor of carrito){
             monto+=valor.precio;
         }
-        let subtotal= document.getElementById("subtotal");
     }
     subtotal.innerText=(`$${monto}ARS`);
+    subtotalPintado.innerText=(`$${monto}ARS`);
     localStorage.setItem('Carrito',JSON.stringify(carrito));
+    return monto;
 }
 export {setearEstadoCarrito,crearProductoEnCarrito,actualizarSubtotal,actualizarBotonCompra};

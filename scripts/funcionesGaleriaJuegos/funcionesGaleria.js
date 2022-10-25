@@ -94,16 +94,18 @@ function agregarBotonesComprar(arrayJuegos,carrito){
     }
 }
 /*
-    Crea y muestra un toast con el texto pasado por parametro.
+    Crea y muestra un toast con el texto pasado por parametro.Si colorVerde es true,
+    el toast tiene un fondo verde, si es false tiene un fondo rojo.
 */
-function mostrarToast(texto,agregoJuego){
-    let color = agregoJuego ? "linear-gradient(to right, #00b09b, #96c93d)":"linear-gradient(to right, rgb(169, 10, 10), red)";
+function mostrarToast(texto,colorVerde){
+    let color = colorVerde ? "linear-gradient(to right, #00b09b, #96c93d)":"linear-gradient(to right, rgb(169, 10, 10), red)";
     Toastify({
         text: texto,
-        duration: 1500,
+        duration: 2000,
+        position: 'left',
         style: {
              background: color,
           }
         }).showToast();
 }
-export {crearDivsJuegos};
+export {crearDivsJuegos,mostrarToast};

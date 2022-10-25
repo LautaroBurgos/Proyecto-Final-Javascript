@@ -20,7 +20,7 @@ function agregarReproduccionAutomaticaVideo(){
 
 
 agregarReproduccionAutomaticaVideo();
-setearEstadoCarrito();
+setearEstadoCarrito(carrito,arrayJuegos);
 crearDivsJuegos(arrayJuegos,carrito);
 agregarEventoGenero(carrito);
 agregarEventoReestablecer(carrito);

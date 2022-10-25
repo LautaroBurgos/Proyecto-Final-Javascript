@@ -32,8 +32,10 @@ main{
 }
 #nav-bar{
     height: 140px;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
+    margin: 0;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -48,23 +50,27 @@ main{
 #nav-bar__logo{
     width: 80px;
     height: 80px;
-
     border-radius: 40px;
 }
 #nav-bar__menu{
     display: flex;
     text-decoration: none;
-    list-style: none;
-    margin-right: 25px;
-}
-.nav-bar__menu__elemento{
-    margin: 10px;
-    display: flex;
+    justify-content: center;
     align-items: center;
+    list-style: none;
+    margin: 20px;
 }
-.nav-link{
-    text-decoration: none;
-    color: white;
+#li__carrito{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: 200px;
+    margin-left: 0;
+    border-radius:  10px 30px 30px 10px;
+}
+#subtotal__carrito{
+    margin-left: 10px;
+    font-weight: 600;
 }
 #logo__carrito{
     width: 30px;
@@ -78,16 +84,16 @@ main{
     z-index: 2;
 }
 
-li:hover{
-    opacity: .7;
+#logo__carrito:hover{
+    background-color: rgba(0, 0, 0, .3);
     cursor: pointer;
-    transition: 400ms;
+    transition: 600ms;
 }
 #base-carrito{
     display: block;
 }
 #lista-carrito{
-    background-color: rgb(233, 220, 220);
+    background-color: rgb(232, 232, 232) ;
     width: 420px;
     height: 100vh;
     position: fixed;
@@ -112,9 +118,33 @@ li:hover{
     overflow-y: scroll;
 }
 #div__subtotal{
-    margin: 20px;
+    margin:  20px;
     font-size: 25px;
     display: flex;
+}
+#div__botones__carrito{
+    display: flex;
+    justify-content: space-around;
+}
+#finalizar__compra,#vaciar__carrito{
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Roboto';
+    font-weight: 600;
+    border-radius: 4px;
+    border-width: .1PX;
+    color: white;
+}
+#finalizar__compra{
+    background: linear-gradient(to right, #00b09b, #89c506);
+}
+#finalizar__compra:hover,#vaciar__carrito:hover{
+    cursor: pointer;
+}
+#vaciar__carrito{
+    background: linear-gradient(to right, rgb(169, 10, 10), red);
 }
 #lista-carrito__cerrar:hover{
     opacity: 1;
@@ -330,7 +360,7 @@ li:hover{
     #nav-bar__logo{
         margin-left: 40px;
     }
-    #logo__carrito{
+    #li__carrito{
         margin-right: 40px;
     }
     #video{
@@ -350,7 +380,7 @@ li:hover{
 }
 @media(min-width:950px){
     #lista-productos{
-        height: 70vh;
+        height: 60vh;
     }
     main{
         flex-direction: row;

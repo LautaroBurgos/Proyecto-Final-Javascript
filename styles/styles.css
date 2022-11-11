@@ -114,7 +114,7 @@ main{
     opacity: .2;
 }
 #lista-productos{
-    height: 400px;
+    height: 30vh;
     overflow-y: scroll;
 }
 #div__subtotal{
@@ -357,6 +357,10 @@ main{
         height: 60px;
         flex-direction: row;
     }
+    #lista-productos{
+        height: 40vh;
+        overflow-y: scroll;
+    }
     #nav-bar__logo{
         margin-left: 40px;
     }
@@ -380,7 +384,8 @@ main{
 }
 @media(min-width:950px){
     #lista-productos{
-        height: 60vh;
+        height: 50vh;
+        overflow-y: scroll;
     }
     main{
         flex-direction: row;
@@ -418,13 +423,13 @@ main{
         padding: 20px 20px 40px 20px;
     }
 }
-@media(min-width:1000px){
+@media(min-width:1100px){
     #galeria{
         margin-top: 140px;
         grid-template-columns: repeat(3,auto);
     }
 }
-@media(min-width:1200px){
+@media(min-width:1350px){
     main{
         flex-direction: row;
         justify-content: unset;
@@ -470,7 +475,7 @@ main{
         padding: 20px 20px 40px 20px;
     }
 }
-@media(min-width:1550px){
+@media(min-width:1600px){
     #galeria{
         margin-top: 140px;
         grid-template-columns: repeat(5,auto);
